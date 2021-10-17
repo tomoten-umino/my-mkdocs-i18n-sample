@@ -351,9 +351,9 @@
                 
                 
                 <h1 id="gluster">ポータブルGluster</h1>
-<p>This repository contains the tool to create the docker image of Glusterfs container with 2 replicas.</p>
+<p>このリポジトリには、2つのレプリカを持つGlusterfsコンテナのDockerイメージを作成するツールが含まれています。</p>
 <p><img alt="Concept" src="../images/DevelopmentAndDeployment.png" /></p>
-<h1 id="table-of-contents">Table of contents</h1>
+<h1 id="_1">目次</h1>
 <ul>
 <li><a href="#dependency">Dependancy</a></li>
 <li><a href="#usage">Usage</a></li>
@@ -365,42 +365,42 @@
 </ul>
 <h1 id="dependency">Dependency</h1>
 <ul>
-<li>This tool uses the following software.</li>
+<li>このツールは、以下のソフトウェアを使用します。</li>
 <li>docker and docker-compose</li>
 <li>bash</li>
 <li>envsubst</li>
 </ul>
 <h1 id="usage">Usage</h1>
-<h2 id="directory-structure">Directory-Structure</h2>
+<h2 id="_2">ディレクトリ構成</h2>
 <p><img alt="Directory" src="../images/DirectoryStructure.png" /></p>
-<h2 id="setting">Setting</h2>
+<h2 id="_3">設定</h2>
 <ul>
-<li>This tool can change the following parameter names by defining them in the setup/.env file.</li>
-<li>NETWORK_ADDR : Network address of the production environment.</li>
-<li>HOSTNAME_1 : Gluster-container-1's name</li>
-<li>IP_ADDR_1 : Gluster-container-1's address </li>
-<li>HOSTNAME_2 : Gluster-container-2's name</li>
-<li>IP_ADDR_2  : Gluster-container-2's address</li>
-<li>VOLUME_NAME : Gluster volume name</li>
+<li>本ツールでは、setup/.envファイルに定義することで、以下のパラメータ名を変更することができます。</li>
+<li>NETWORK_ADDR : 製品環境のネットワークアドレス</li>
+<li>HOSTNAME_1 : Gluster-container-1のホスト名</li>
+<li>IP_ADDR_1 : Gluster-container-1のIPアドレス </li>
+<li>HOSTNAME_2 : Gluster-container-2のホスト名</li>
+<li>IP_ADDR_2  : Gluster-container-2のIPアドレス</li>
+<li>VOLUME_NAME : Glusterのボリューム名</li>
 </ul>
-<h2 id="building">Building</h2>
+<h2 id="_4">ビルド</h2>
 <ul>
-<li>After moving to the setup directory, run build.sh as follows.</li>
-<li>You can check the Usage by running the -h(or --help) option to build.sh</li>
-<li><code>AAAAA:BBBBB</code> is docker image name and tag.</li>
-<li>After executing build.sh, the docker image (portable-gluster.tar) and docker-compose.yml for deployment will be generated in the deploy directory.</li>
+<li>setupディレクトリに移動後、以下のようにbuild.shを実行してください。</li>
+<li>build.shのオプションは-h（または--help）を引数に実行すると確認できます。</li>
+<li><code>AAAAA:BBBBB</code> はdocker image:tagのことです。</li>
+<li>build.sh実行後、deployディレクトリにdocker image (portable-gluster.tar) デプロイ用docker-compose.ymlが生成されます。</li>
 </ul>
 <div class="highlight"><pre><span></span><code>$ cd [setup directory]
 $ ./build.sh -t AAAAAA:BBBBBB   
 </code></pre></div>
-<h2 id="deployment">Deployment</h2>
+<h2 id="_5">デプロイ</h2>
 <ul>
-<li>Transfer what is under the deploy directory to any directory in the production environment.</li>
-<li>After moving to the setup directory, load the docker image in the deploy directory.</li>
-<li>Run as a user who can use the docker command.</li>
-<li>After loading docker iamge, Start the docker container as follows.</li>
-<li>Run on two servers at the same time.</li>
-<li>Glusterfs logs are output to the log directory.</li>
+<li>デプロイディレクトリの下にあるものを、本番環境の任意のディレクトリに転送します。</li>
+<li>setupディレクトリに移動した後、deployディレクトリにあるdockerイメージを読み込みます。</li>
+<li>dockerコマンドが使えるユーザで実行すること。</li>
+<li>docker iamgeをロードしたら、次のようにdockerコンテナを起動します。</li>
+<li>2つのサーバで同時に実行してください。</li>
+<li>起動ログはlogディレクトリに出力されます。</li>
 </ul>
 <div class="highlight"><pre><span></span><code>$ cd [deploy directory]
 $ docker image load -i portable-gluster.tar
@@ -409,13 +409,13 @@ $ docker-compose up -d gluster-server-1
 -- in the server 2 ----------------------------------
 $ docker-compose up -d gluster-server-2
 </code></pre></div>
-<h3 id="remarks">Remarks</h3>
+<h3 id="_6">備考</h3>
 <ul>
-<li>The Gluster container moves the Glusterfs configuration directory in the container to the specified location at startup as the following figure.</li>
+<li>Glusterコンテナは、下図のように起動時にコンテナ内のGlusterfs設定ディレクトリを指定した場所に移動する。</li>
 </ul>
 <p><img alt="ConfigDir" src="../images/MoveConfigDirectory.png" /></p>
-<h1 id="license">License</h1>
-<p>This tool is released under the WTFPL, see LICENSE.</p>
+<h1 id="_7">ライセンス</h1>
+<p>このツールはWTFPLでリリースされています（LICENSE参照）。</p>
                 
               
               
